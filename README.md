@@ -110,7 +110,12 @@ pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.1.0 chex==0.1.87 \
     tqdm==4.67.0 triton==3.3.1 typeguard==2.13.3 \
     typing-extensions==4.12.2 zstandard==0.23.0
 ```
-> **Note:** Many thanks to [lonelycrab888](https://github.com/lonelycrab888) and [xryller](https://github.com/xryller) for their contributions supporting the **NVIDIA Blackwell** architecture.
+
+> **Examples of supported graphics accelerators:**  
+> **Ampere & Ada Lovelace**: RTX 3060, RTX 3080, RTX 3090, RTX 4060–4090, A100, L40.  
+> **Blackwell**: RTX 5080–5090, B200, GB200.
+>
+> Many thanks to [lonelycrab888](https://github.com/lonelycrab888) and [xryller](https://github.com/xryller) for their contributions supporting the **NVIDIA Blackwell** architecture.
 
 ## 4. Install AlphaFold 3
 
