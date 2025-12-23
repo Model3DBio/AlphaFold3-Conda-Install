@@ -75,7 +75,9 @@ pip install --upgrade pip  # Update pip (specific to the AF3 environment)
 
 ## 3. Install Required Python Packages with pip
 
-Install the necessary Python packages using pip:
+Install the required Python packages via pip, selecting the appropriate set based on your GPU architecture:
+
+- ##### **NVIDIA Ampere** & **NVIDIA Ada Lovelace** architectures:
 
 ```bash
 pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.1.0 chex==0.1.87 \
@@ -92,8 +94,23 @@ pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.1.0 chex==0.1.87 \
     tqdm==4.67.0 triton==3.1.0 typeguard==2.13.3 \
     typing-extensions==4.12.2 zstandard==0.23.0
 ```
-
----
+- ##### **NVIDIA Blackwell** architecture:
+```
+pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.1.0 chex==0.1.87 \
+    dm-haiku==0.0.14 dm-tree==0.1.8 filelock==3.16.1 \
+    "jax[cuda12]==0.6.1" jax-cuda12-pjrt==0.6.1 jax-cuda12-plugin[with-cuda]==0.6.1 \
+    jax-triton==0.3.0 jaxlib==0.6.1 jaxtyping==0.2.34 jmp==0.0.4 ml-dtypes==0.5.0 \
+    numpy==2.1.3 nvidia-cublas-cu12==12.8.4.1 \
+    nvidia-cuda-cupti-cu12==12.9.19 nvidia-cuda-nvcc-cu12==12.9.41 \
+    nvidia-cuda-runtime-cu12==12.9.37 nvidia-cudnn-cu12==9.10.1.4 \
+    nvidia-cufft-cu12==11.4.0.6 nvidia-cusolver-cu12==11.7.4.40 \
+    nvidia-cusparse-cu12==12.5.9.5 nvidia-nccl-cu12==2.26.5 \
+    nvidia-nvjitlink-cu12==12.9.41 opt-einsum==3.4.0 pillow==11.0.0 \
+    rdkit==2024.3.5 scipy==1.14.1 tabulate==0.9.0 toolz==1.0.0 \
+    tqdm==4.67.0 triton==3.3.1 typeguard==2.13.3 \
+    typing-extensions==4.12.2 zstandard==0.23.0
+```
+> **Note:** Many thanks to [lonelycrab888](https://github.com/lonelycrab888) and [xryller](https://github.com/xryller) for their contributions supporting the **NVIDIA Blackwell** architecture.
 
 ## 4. Install AlphaFold 3
 
