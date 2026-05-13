@@ -1,5 +1,5 @@
-# Comprehensive Guide to Installing and Configuring AlphaFold 3 Using Conda Python 3.11 Environment
-This guide details the necessary steps to install and configure AlphaFold 3.0.1 using a conda Python 3.11 environment and also provede helps in the instalacion of the newset AlphaFold 3.0.2 It includes the installation of Miniconda, environment creation, dependency installation, repository cloning, model configuration, and the preparation of an execution script. **It has been designed to rely solely on conda, without the need for installing any additional packages on the operating system, making it possible to perform this installation on any operating system that supports conda.**  It is assumed that the appropriate graphics drivers for your Linux distribution are correctly installed. For detailed instructions, please refer to the [mini-tutorial](#cuda-and-nvidia-drivers).
+# Comprehensive Guide to Installing and Configuring AlphaFold 3 Using Conda Python Environment
+This guide details the necessary steps to install and configure AlphaFold 3.0.1 using a Conda Python 3.11 environment, and also provides help with installing the newest AlphaFold 3.0.2 release. It includes the installation of Miniconda, environment creation, dependency installation, repository cloning, model configuration, and the preparation of an execution script. **It has been designed to rely solely on conda, without the need for installing any additional packages on the operating system, making it possible to perform this installation on any operating system that supports conda.**  It is assumed that the appropriate graphics drivers for your Linux distribution are correctly installed. For detailed instructions, please refer to the [mini-tutorial](#cuda-and-nvidia-drivers).
 
 ## 0. Install Miniconda
 
@@ -17,7 +17,7 @@ source ~/.bashrc
 ```
 
 > **Note:** During installation, you can accept the default settings or customize them according to your preferences.
-> **Note:** The AlphaFold 3.0.2 install instruccion are in testing.
+> **Note:** The AlphaFold 3.0.2 installation instructions are currently being tested.
 
 ---
 
@@ -55,7 +55,7 @@ Install the necessary development tools and dependencies within the conda enviro
 conda install -c conda-forge cmake gcc gxx
 
 # Install Boost for Python 3.11 or Python 3.12 and numpy
-conda install -c conda-forge boost boost-cpp numpy -y # Boost for Python 3.11
+conda install -c conda-forge boost boost-cpp numpy -y # Boost for Python 3.xx
 
 # Install compression libraries
 conda install -c conda-forge bzip2 zstd -y
@@ -78,7 +78,7 @@ pip install --upgrade pip  # Update pip (specific to the AF3 environment)
 
 Install the required Python packages via pip, selecting the appropriate set based on your GPU architecture:
 
-- ##### **NVIDIA Ampere** & **NVIDIA Ada Lovelace** architectures:
+- ##### AlphaFold 3.0.1 **NVIDIA Ampere** & **NVIDIA Ada Lovelace** architectures:
 
 ```bash
 pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.1.0 chex==0.1.87 \
@@ -95,7 +95,7 @@ pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.1.0 chex==0.1.87 \
     tqdm==4.67.0 triton==3.1.0 typeguard==2.13.3 \
     typing-extensions==4.12.2 zstandard==0.23.0
 ```
-- ##### **NVIDIA Blackwell** architecture:
+- ##### AlphaFold 3.0.1 **NVIDIA Blackwell** architecture:
 ```
 pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.1.0 chex==0.1.87 \
     dm-haiku==0.0.14 dm-tree==0.1.8 filelock==3.16.1 \
@@ -111,7 +111,7 @@ pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.1.0 chex==0.1.87 \
     tqdm==4.67.0 triton==3.3.1 typeguard==2.13.3 \
     typing-extensions==4.12.2 zstandard==0.23.0
 ```
-- ##### **Alphafold 3.0.2 native support NVIDIA Blackwell** architecture:
+- ##### AlphaFold 3.0.2 — **NVIDIA Blackwell and older architectures**:
 ```
 pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.3.1 chex==0.1.91 \
     dm-haiku==0.0.16 filelock==3.16.1 \
@@ -138,7 +138,7 @@ pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.3.1 chex==0.1.91 \
     tensorstore==0.1.80 tokamax==0.0.11 treescope==0.1.10 \
     typing-inspection==0.4.2 wadler-lindig==0.1.7 zipp==3.23.0
 ```
-> **Note:** The AlphaFold 3.0.2 install instruccion are in testing.
+> **Note:** The AlphaFold 3.0.2 installation instructions are currently being tested.
 > **Examples of supported graphics accelerators:**  
 > **Ampere & Ada Lovelace**: RTX 3060, RTX 3080, RTX 3090, RTX 4060–4090, A100, L40.  
 > **Blackwell**: RTX 5080–5090, B200, GB200.
