@@ -1,5 +1,5 @@
 # Comprehensive Guide to Installing and Configuring AlphaFold 3 Using Conda Python 3.11 Environment
-This guide details the necessary steps to install and configure AlphaFold 3 using a conda Python 3.11 environment. It includes the installation of Miniconda, environment creation, dependency installation, repository cloning, model configuration, and the preparation of an execution script. **It has been designed to rely solely on conda, without the need for installing any additional packages on the operating system, making it possible to perform this installation on any operating system that supports conda.**  It is assumed that the appropriate graphics drivers for your Linux distribution are correctly installed. For detailed instructions, please refer to the [mini-tutorial](#cuda-and-nvidia-drivers).
+This guide details the necessary steps to install and configure AlphaFold 3.0.1 using a conda Python 3.11 environment and also provede helps in the instalacion of the newset AlphaFold 3.0.2 It includes the installation of Miniconda, environment creation, dependency installation, repository cloning, model configuration, and the preparation of an execution script. **It has been designed to rely solely on conda, without the need for installing any additional packages on the operating system, making it possible to perform this installation on any operating system that supports conda.**  It is assumed that the appropriate graphics drivers for your Linux distribution are correctly installed. For detailed instructions, please refer to the [mini-tutorial](#cuda-and-nvidia-drivers).
 
 ## 0. Install Miniconda
 
@@ -17,17 +17,18 @@ source ~/.bashrc
 ```
 
 > **Note:** During installation, you can accept the default settings or customize them according to your preferences.
+> **Note:** The AlphaFold 3.0.2 install instruccion are in testing.
 
 ---
-Podrías añadir la explicación así, de forma clara y breve, para que el motivo quede documentado:
 
-## 1. Create a Conda Environment with Python 3.11
+## 1. Create a Conda Environment with Python 3.11 or Python 3.12
 
 Create and activate a new conda environment named `Alphafold3` with Python 3.11:
 
 ```bash
 # Create the environment
 conda create -n Alphafold3 python=3.11
+conda create -n Alphafold3 python=3.12 # AlphaFold 3.0.2
 
 # Activate the environment
 conda activate Alphafold3
@@ -53,7 +54,7 @@ Install the necessary development tools and dependencies within the conda enviro
 # Install cmake, gcc, and gxx
 conda install -c conda-forge cmake gcc gxx
 
-# Install Boost for Python 3.11 and numpy
+# Install Boost for Python 3.11 or Python 3.12 and numpy
 conda install -c conda-forge boost boost-cpp numpy -y # Boost for Python 3.11
 
 # Install compression libraries
@@ -110,7 +111,34 @@ pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.1.0 chex==0.1.87 \
     tqdm==4.67.0 triton==3.3.1 typeguard==2.13.3 \
     typing-extensions==4.12.2 zstandard==0.23.0
 ```
-
+- ##### **Alphafold 3.0.2 native support NVIDIA Blackwell** architecture:
+```
+pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.3.1 chex==0.1.91 \
+    dm-haiku==0.0.16 filelock==3.16.1 \
+    "jax[cuda12]==0.9.1" jax-cuda12-pjrt==0.9.1 jax-cuda12-plugin[with-cuda]==0.9.1 \
+    jaxlib==0.9.1 jaxtyping==0.3.5 jmp==0.0.4 ml-dtypes==0.5.4 \
+    numpy==2.4.1 nvidia-cublas-cu12==12.9.1.4 \
+    nvidia-cuda-cupti-cu12==12.9.79 nvidia-cuda-nvcc-cu12==12.9.86 \
+    nvidia-cuda-runtime-cu12==12.9.79 nvidia-cudnn-cu12==9.17.1.4 \
+    nvidia-cufft-cu12==11.4.1.4 nvidia-cusolver-cu12==11.7.5.82 \
+    nvidia-cusparse-cu12==12.5.10.65 nvidia-nccl-cu12==2.29.2 \
+    nvidia-nvjitlink-cu12==12.9.86 opt-einsum==3.4.0 pillow==12.1.0 \
+    rdkit==2025.9.4 scipy==1.17.0 tabulate==0.9.0 toolz==1.1.0 \
+    tqdm==4.67.1 typeguard==2.13.3 \
+    typing-extensions==4.15.0 zstandard==0.25.0 \
+    aiofiles==25.1.0 annotated-types==0.7.0 einshape==1.0 etils==1.13.0 \
+    flax==0.12.2 fsspec==2026.1.0 humanize==4.15.0 \
+    immutabledict==4.2.2 importlib-resources==6.5.2 msgpack==1.1.2 \
+    nest-asyncio==1.6.0 nvidia-cuda-cccl-cu12==12.9.27 \
+    nvidia-cuda-nvrtc-cu12==12.9.86 nvidia-nvshmem-cu12==3.5.19 \
+    optax==0.2.6 orbax-checkpoint==0.11.31 packaging==25.0 \
+    protobuf==6.33.3 psutil==7.2.1 pydantic==2.12.5 \
+    pydantic-core==2.41.5 pyyaml==6.0.3 qwix==0.1.5 \
+    rich==14.2.0 simplejson==3.20.2 tensorboardx==2.6.4 \
+    tensorstore==0.1.80 tokamax==0.0.11 treescope==0.1.10 \
+    typing-inspection==0.4.2 wadler-lindig==0.1.7 zipp==3.23.0
+```
+> **Note:** The AlphaFold 3.0.2 install instruccion are in testing.
 > **Examples of supported graphics accelerators:**  
 > **Ampere & Ada Lovelace**: RTX 3060, RTX 3080, RTX 3090, RTX 4060–4090, A100, L40.  
 > **Blackwell**: RTX 5080–5090, B200, GB200.
