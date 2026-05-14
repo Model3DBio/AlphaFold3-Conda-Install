@@ -17,7 +17,7 @@ source ~/.bashrc
 ```
 
 > **Note:** During installation, you can accept the default settings or customize them according to your preferences.
-> **Note:** The AlphaFold 3.0.2 installation instructions are currently being tested.
+> **Note:** The AlphaFold 3.0.2 installation instructions have been tested on an RTX 4090.
 
 ---
 
@@ -138,7 +138,8 @@ pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.3.1 chex==0.1.91 \
     tensorstore==0.1.80 tokamax==0.0.11 treescope==0.1.10 \
     typing-inspection==0.4.2 wadler-lindig==0.1.7 zipp==3.23.0
 ```
-> **Note:** The AlphaFold 3.0.2 installation instructions are currently being tested.
+> **Note:** The AlphaFold 3.0.2 installation instructions have been tested on an RTX 4090.
+
 > **Examples of supported graphics accelerators:**  
 > **Ampere & Ada Lovelace**: RTX 3060, RTX 3080, RTX 3090, RTX 4060–4090, A100, L40.  
 > **Blackwell**: RTX 5080–5090, B200, GB200.
