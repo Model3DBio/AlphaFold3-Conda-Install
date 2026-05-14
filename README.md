@@ -17,6 +17,7 @@ source ~/.bashrc
 ```
 
 > **Note:** During installation, you can accept the default settings or customize them according to your preferences.
+
 > **Note:** The AlphaFold 3.0.2 installation instructions have been tested on an RTX 4090.
 
 ---
