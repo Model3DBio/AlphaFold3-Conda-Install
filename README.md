@@ -104,7 +104,7 @@ pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.3.1 chex==0.1.91 \
     pydantic-core==2.41.5 pyyaml==6.0.3 qwix==0.1.5 \
     rich==14.2.0 simplejson==3.20.2 tensorboardx==2.6.4 \
     tensorstore==0.1.80 tokamax==0.0.11 treescope==0.1.10 \
-    typing-inspection==0.4.2 wadler-lindig==0.1.7 zipp==3.23.0 Bio==1.87
+    typing-inspection==0.4.2 wadler-lindig==0.1.7 zipp==3.23.0 biopython==1.8.3
 ```
 - ##### AlphaFold 3.0.1 **NVIDIA Ampere** & **NVIDIA Ada Lovelace** architectures:
 
