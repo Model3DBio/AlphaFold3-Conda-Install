@@ -30,7 +30,7 @@ Create and activate a new conda environment named `Alphafold3` with Python 3.11:
 
 ```bash
 # Create the environment
-conda create -n Alphafold3 python=3.12 # AlphaFold 3.0.3
+conda create -n Alphafold3 python=3.12 # AlphaFold 3.0.3 / AlphaFold 3.0.4 
 conda create -n Alphafold3 python=3.11 # AlphaFold 3.0.1
 
 # Activate the environment
@@ -79,7 +79,103 @@ pip install --upgrade pip  # Update pip (specific to the AF3 environment)
 
 ## 3. Install Required Python Packages with pip
 
-Install the required Python packages via pip, selecting the appropriate set based on your GPU architecture:
+Install the required Python packages via pip, selecting the appropriate package set based on the AlphaFold version, operating system, system architecture, and accelerator backend.
+
+The latest version, AlphaFold 3.0.4, introduces separate installation options for
+
+* **Linux CPU**
+* **Linux with an NVIDIA GPU and CUDA 12**
+* **macOS on Apple Silicon using the JAX Metal/MPS backend**
+
+For AlphaFold 3.0.4, first install the common package set and then follow the instructions for the appropriate backend.
+
+* ##### AlphaFold 3.0.4 — **Common packages for all supported platforms**
+
+```bash
+pip install \
+    pandas==2.2.3 matplotlib==3.10.0 \
+    absl-py==2.3.1 chex==0.1.91 dm-haiku==0.0.16 \
+    filelock==3.16.1 \
+    jax==0.10.2 jaxlib==0.10.2 jaxtyping==0.3.5 \
+    jmp==0.0.4 ml-dtypes==0.5.4 numpy==2.4.1 \
+    opt-einsum==3.4.0 pillow==12.1.0 rdkit==2025.9.4 \
+    scipy==1.17.0 tabulate==0.9.0 toolz==1.1.0 \
+    tqdm==4.67.1 typeguard==2.13.3 \
+    typing-extensions==4.15.0 zstandard==0.25.0 \
+    aiofiles==25.1.0 annotated-types==0.7.0 einshape==1.0 \
+    "etils[epath]==1.13.0" flax==0.12.2 fsspec==2026.6.0 \
+    humanize==4.15.0 immutabledict==4.2.2 \
+    importlib-resources==6.5.2 msgpack==1.1.2 \
+    nest-asyncio==1.6.0 optax==0.2.6 \
+    orbax-checkpoint==0.11.31 packaging==25.0 \
+    protobuf==6.33.3 psutil==7.2.1 \
+    pydantic==2.12.5 pydantic-core==2.41.5 \
+    pyyaml==6.0.3 qwix==0.1.5 rich==14.2.0 \
+    markdown-it-py==4.0.0 mdurl==0.1.2 pygments==2.19.2 \
+    simplejson==3.20.2 tensorboardx==2.6.4 \
+    tensorstore==0.1.80 tokamax==0.0.12 \
+    treescope==0.1.10 typing-inspection==0.4.2 \
+    wadler-lindig==0.1.7 zipp==3.23.0 \
+    biopython==1.83
+```
+
+After installing the common packages, select the appropriate backend below.
+
+###### Option 1: Linux CPU
+
+No additional Python packages are required. The common installation already includes the CPU versions of:
+
+```text
+jax==0.10.2
+jaxlib==0.10.2
+```
+
+This option does not install any CUDA or NVIDIA packages.
+
+###### Option 2: Linux with an NVIDIA GPU — CUDA 12
+
+Use this option for supported NVIDIA GPUs, including **Blackwell and earlier CUDA-capable NVIDIA architectures**.
+
+Install the CUDA 12 backend and the exact NVIDIA library versions recorded in the AlphaFold 3.0.4 lock file:
+
+```bash
+pip install \
+    "jax[cuda12]==0.10.2" jaxlib==0.10.2 \
+    jax-cuda12-pjrt==0.10.2 "jax-cuda12-plugin[with-cuda]==0.10.2" \
+    nvidia-cublas-cu12==12.9.1.4 nvidia-cuda-cccl-cu12==12.9.27 \
+    nvidia-cuda-cupti-cu12==12.9.79 nvidia-cuda-nvcc-cu12==12.9.86 \
+    nvidia-cuda-nvrtc-cu12==12.9.86 nvidia-cuda-runtime-cu12==12.9.79 \
+    nvidia-cudnn-cu12==9.17.1.4 nvidia-cufft-cu12==11.4.1.4 \
+    nvidia-cusolver-cu12==11.7.5.82 nvidia-cusparse-cu12==12.5.10.65 \
+    nvidia-nccl-cu12==2.29.2 nvidia-nvjitlink-cu12==12.9.86 \
+    nvidia-nvshmem-cu12==3.5.19
+```
+
+Do not install these CUDA packages on macOS or on a Linux system intended to use only the CPU backend.
+
+###### Option 3: macOS on Apple Silicon
+
+Use this option on ARM-based macOS systems, including Apple Silicon processors such as the M1, M2, M3, M4, and later generations.
+
+Install JAX together with the Apple Metal/MPS backend:
+
+```bash
+pip install \
+    jax==0.10.2 \
+    jaxlib==0.10.2 \
+    jax-mps==0.10.9
+```
+Do not install the NVIDIA CUDA packages on macOS.
+
+> **AlphaFold 3.0.4 installation summary:**
+>
+> | Platform              | Required commands                                |
+> | --------------------- | ------------------------------------------------ |
+> | Linux CPU             | Common package command only                      |
+> | Linux with NVIDIA GPU | Common package command + CUDA 12 backend command |
+> | macOS Apple Silicon   | Common package command + JAX-MPS command         |
+>
+> CUDA and JAX-MPS are alternative accelerator backends and must not be installed together.
 
 - ##### AlphaFold 3.0.3 — **NVIDIA Blackwell and older architectures**:
 ```
@@ -106,7 +202,7 @@ pip install pandas==2.2.3 matplotlib==3.10.0 absl-py==2.3.1 chex==0.1.91 \
     pydantic-core==2.41.5 pyyaml==6.0.3 qwix==0.1.5 \
     rich==14.2.0 simplejson==3.20.2 tensorboardx==2.6.4 \
     tensorstore==0.1.80 tokamax==0.0.11 treescope==0.1.10 \
-    typing-inspection==0.4.2 wadler-lindig==0.1.7 zipp==3.23.0 biopython==1.8.3
+    typing-inspection==0.4.2 wadler-lindig==0.1.7 zipp==3.23.0 biopython==1.83
 ```
 - ##### AlphaFold 3.0.1 **NVIDIA Ampere** & **NVIDIA Ada Lovelace** architectures:
 
@@ -203,6 +299,9 @@ Proceed to decompress and move the model files:
 ```bash
 # Download the model parameters (replace <your_download_url>)
 wget <your_download_url>
+
+# Create the model folder
+mkdir ${ALPHAFOLD3DIR}/models/
 
 # Move the compressed model to the models directory
 mv af3.bin.zst ${ALPHAFOLD3DIR}/models/
